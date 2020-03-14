@@ -37,9 +37,22 @@
          must be a menu. -->
     <Groups>
     
-      <Group guid="guidCompareFilesVS2019PackageCmdSet1" id="MyMenuGroup" priority="0xfff0">
+      <Group guid="guidCompareFilesVS2019PackageCmdSet" id="MyMenuGroup" priority="0xfff0">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
       </Group>
+    
+      <Group guid="guidCompareFilesCmdSet" id="MyContextMenuGroup" priority="0x600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+      </Group>
+
+      <Group guid="guidCompareFilesWebCmdSet" id="MyWebContextMenuGroup" priority="0x600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBITEMNODE" />
+      </Group>
+
+      <Group guid="guidCompareFilesMultiCmdSet" id="MyMultiContextMenuGroup" priority="0x600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_MULTIITEM" />
+      </Group>
+
     </Groups>
 
     <!--Buttons section. -->
@@ -54,13 +67,38 @@
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
     
-      <Button guid="guidCompareFilesVS2019PackageCmdSet1" id="cmdidConfigureCompareFilesCommand" priority="0x0100" type="Button">
-        <Parent guid="guidCompareFilesVS2019PackageCmdSet1" id="MyMenuGroup" />
+      <Button guid="guidCompareFilesVS2019PackageCmdSet" id="cmdidConfigureCompareFilesCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCompareFilesVS2019PackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages2" id="bmpPic1" />
         <Strings>
           <ButtonText>Configure Compare Files...</ButtonText>
         </Strings>
       </Button>
+
+      <Button guid="guidCompareFilesCmdSet" id="cmdidCompareFilesCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCompareFilesCmdSet" id="MyContextMenuGroup" />
+        <Icon guid="guidImages3" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Compare Files...</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidCompareFilesWebCmdSet" id="cmdidCompareFilesWebCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCompareFilesWebCmdSet" id="MyWebContextMenuGroup" />
+        <Icon guid="guidImages3" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Compare Files...</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidCompareFilesMultiCmdSet" id="cmdidCompareFilesMultiCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCompareFilesMultiCmdSet" id="MyMultiContextMenuGroup" />
+        <Icon guid="guidImages3" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Compare Files...</ButtonText>
+        </Strings>
+      </Button>
+
     </Buttons>
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -73,6 +111,7 @@
       <Bitmap guid="guidImages" href="Resources\CompareFilesCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages1" href="Resources\ConfigureCompareFilesCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages2" href="Resources\ConfigureCompareFilesCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages3" href="Resources\CompareFilesCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
   </Commands>
 
@@ -81,8 +120,24 @@
     <GuidSymbol name="guidCompareFilesVS2019Package" value="{7c3f3b42-91ad-4037-869f-5054c8458b26}" />
 
     <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="guidCompareFilesVS2019PackageCmdSet" value="{d56adf04-1158-4446-b961-cda141b3a012}">
-      <IDSymbol name="MyMenuGroup" value="0x1020" />
+    <GuidSymbol name="guidCompareFilesVS2019PackageCmdSet" value="{b39b66a5-d715-428d-8172-469dafdd0da3}">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <IDSymbol value="256" name="cmdidConfigureCompareFilesCommand" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidCompareFilesCmdSet" value="{b39b66a5-d715-428d-8172-469dafdd0da4}">
+      <IDSymbol name="MyContextMenuGroup" value="0x1020" />
+      <IDSymbol name="cmdidCompareFilesCommand" value="4129" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidCompareFilesWebCmdSet" value="{b39b66a5-d715-428d-8172-469dafdd0da5}">
+      <IDSymbol name="MyWebContextMenuGroup" value="0x1020" />
+      <IDSymbol name="cmdidCompareFilesWebCommand" value="4130" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidCompareFilesMultiCmdSet" value="{b39b66a5-d715-428d-8172-469dafdd0da6}">
+      <IDSymbol name="MyMultiContextMenuGroup" value="0x1020" />
+      <IDSymbol name="cmdidCompareFilesMultiCommand" value="4131" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{52cd1690-d752-4a3a-b233-d929d011897f}">
@@ -94,7 +149,7 @@
       <IDSymbol name="bmpPicStrikethrough" value="6" />
     </GuidSymbol>
   
-    <GuidSymbol value="{d5066f60-8e2f-474c-96ce-78193a355b0a}" name="guidImages1">
+    <GuidSymbol name="guidImages1" value="{d5066f60-8e2f-474c-96ce-78193a355b0a}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />
@@ -103,12 +158,16 @@
       <IDSymbol name="bmpPicStrikethrough" value="6" />
     </GuidSymbol>
   
-    <GuidSymbol value="{b39b66a5-d715-428d-8172-469dafdd0da3}" name="guidCompareFilesVS2019PackageCmdSet1">
-      <IDSymbol value="4128" name="MyMenuGroup" />
-      <IDSymbol value="256" name="cmdidConfigureCompareFilesCommand" />
+    <GuidSymbol name="guidImages2" value="{67593d7d-c9be-4142-997d-62d3a06d5a11}">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
     </GuidSymbol>
   
-    <GuidSymbol value="{67593d7d-c9be-4142-997d-62d3a06d5a11}" name="guidImages2">
+    <GuidSymbol name="guidImages3" value="{a618fa1e-c949-44c1-b9bf-75181b95a16e}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

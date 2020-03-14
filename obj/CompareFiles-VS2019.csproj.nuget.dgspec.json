@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\j_nagy\\gDrive\\Code\\Visual Studio 2019\\Projects\\CompareFiles-VS2019\\CompareFiles-VS2019.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\j_nagy\\gDrive\\Code\\Visual Studio 2019\\Projects\\CompareFiles-VS2019\\CompareFiles-VS2019.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\j_nagy\\gDrive\\Code\\Visual Studio 2019\\Projects\\CompareFiles-VS2019\\CompareFiles-VS2019.csproj",
+        "projectName": "CompareFiles-VS2019",
+        "projectPath": "C:\\Users\\j_nagy\\gDrive\\Code\\Visual Studio 2019\\Projects\\CompareFiles-VS2019\\CompareFiles-VS2019.csproj",
+        "packagesPath": "C:\\Users\\j_nagy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\j_nagy\\gDrive\\Code\\Visual Studio 2019\\Projects\\CompareFiles-VS2019\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\j_nagy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Microsoft.VSSDK.BuildTools": {
+              "target": "Package",
+              "version": "[16.4.1057, )"
+            },
+            "Microsoft.VisualStudio.SDK": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[16.0.202, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
