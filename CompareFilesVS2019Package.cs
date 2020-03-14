@@ -30,9 +30,6 @@ namespace CompareFilesVS2019
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class CompareFilesVS2019Package : AsyncPackage
     {
-        private string compareToolPath = @"%PROGRAMFILES(X86)%\Beyond Compare 4\BCompare.exe";
-        private const string settingsFilePath = @"%USERPROFILE%\AppData\Local\CompareFilesAddIn\CompareFiles.conf";
-
         /// <summary>
         /// CompareFilesVS2019Package GUID string.
         /// </summary>

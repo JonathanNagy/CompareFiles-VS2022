@@ -23,3 +23,4 @@ C:\Users\j_nagy\gDrive\Code\Visual Studio 2019\Projects\CompareFiles-VS2019\obj\
 C:\Users\j_nagy\gDrive\Code\Visual Studio 2019\Projects\CompareFiles-VS2019\obj\Debug\extension.vsixmanifest
 C:\Users\j_nagy\gDrive\Code\Visual Studio 2019\Projects\CompareFiles-VS2019\obj\Debug\files.json
 C:\Users\j_nagy\gDrive\Code\Visual Studio 2019\Projects\CompareFiles-VS2019\obj\Debug\createTemplateManifests.cache
+C:\Users\j_nagy\gDrive\Code\Visual Studio 2019\Projects\CompareFiles-VS2019\obj\Debug\_EmptyResource.resources.original
