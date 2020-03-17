@@ -60,6 +60,7 @@
     <Compile Include="CompareFilesVS2019Package.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
