@@ -30,6 +30,17 @@ namespace CompareFilesVS2019
             this.package = package ?? throw new ArgumentNullException(nameof(package));
             this.applicationObject = appObject ?? throw new ArgumentNullException(nameof(appObject));
         }
+        
+        /// <summary>
+        /// Gets the service provider from the owner package.
+        /// </summary>
+        private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
+        {
+            get
+            {
+                return this.package;
+            }
+        }
 
         /// <summary>
         /// This function is the callback used to execute the command when the menu item is clicked.
