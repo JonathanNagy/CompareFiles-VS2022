@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="CompareFiles-VS2019.eaf28116-b78f-43d1-9b40-08f1769b00ad" Version="0.4" Language="en-US" Publisher="Jonathan Nagy" />
-        <DisplayName>CompareFiles VS2019</DisplayName>
+        <Identity Id="CompareFiles-VS2019.eaf28116-b78f-43d1-9b40-08f1769b00ad" Version="0.42" Language="en-US" Publisher="JonathanNagy" />
+        <DisplayName>Compare Files VS2019</DisplayName>
         <Description xml:space="preserve">Control click any two files in Solution explorer and then right click and select "Compare Files..." and the configured third-party comparison tool will come up show a diff between the two files.</Description>
         <MoreInfo>http://visualstudiogallery.msdn.microsoft.com/def5e5e7-f874-423c-8674-a8421490c4ac</MoreInfo>
         <Icon>Package.ico</Icon>
@@ -10,6 +10,9 @@
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
+        <InstallationTarget Version="[16.0, 17.0)" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Version="[16.0, 17.0)" Id="Microsoft.VisualStudio.Enterprise" />
+        <InstallationTarget Version="[16.0, 17.0)" Id="Microsoft.VisualStudio.IntegratedShell" />
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />

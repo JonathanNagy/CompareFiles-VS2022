@@ -1,3 +1,6 @@
 .vs/
 obj/
 bin/
+CompareFiles-VS2019.csproj.user
+.vs/CompareFiles-VS2019/v16/.suo
+.vs/CompareFiles-VS2019/v16/Server/sqllite3/storage.ide

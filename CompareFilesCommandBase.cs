@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EnvDTE;
+//using EnvDTE;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace CompareFilesVS2019
 {
@@ -17,13 +19,16 @@ namespace CompareFilesVS2019
         /// VS Package that provides this command, not null.
         /// </summary>
         protected readonly AsyncPackage package;
-        
+
+        private readonly DTE applicationObject;
+
         private string compareToolPath = @"%PROGRAMFILES(X86)%\Beyond Compare 4\BCompare.exe";
         private const string settingsFilePath = @"%USERPROFILE%\AppData\Local\CompareFilesAddIn\CompareFiles.conf";
 
-        protected CompareFilesCommandBase(AsyncPackage package)
+        protected CompareFilesCommandBase(AsyncPackage package, DTE appObject)
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
+            this.applicationObject = appObject ?? throw new ArgumentNullException(nameof(appObject));
         }
 
         /// <summary>
@@ -41,9 +46,7 @@ namespace CompareFilesVS2019
 
             LoadCompareToolPath();
 
-            var _applicationObject = (DTE)package.GetServiceAsync(typeof(DTE)).Result;
-
-            var items = _applicationObject.SelectedItems;
+            var items = applicationObject.SelectedItems;
 
             var compareToolPathExpanded = Environment.ExpandEnvironmentVariables(compareToolPath);
 
@@ -101,7 +104,6 @@ namespace CompareFilesVS2019
                     MessageBox.Show("Select 1 or 2 files.", "Compare Files");
                     return;
             }
-
         }
 
         

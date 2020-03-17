@@ -97,7 +97,8 @@ namespace CompareFilesVS2019
 
             ShowCompareFilesConfigurationWindow(sender, e);
         }
-                /// <summary>
+
+        /// <summary>
         /// This function is called when the user clicks the menu item that shows the 
         /// tool window. See the Initialize method to see how the menu item is associated to 
         /// this function using the OleMenuCommandService service and the MenuCommand class.

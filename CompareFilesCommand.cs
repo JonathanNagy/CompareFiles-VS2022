@@ -3,6 +3,7 @@ using System.ComponentModel.Design;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
@@ -30,7 +31,7 @@ namespace CompareFilesVS2019
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
         /// <param name="commandService">Command service to add command to, not null.</param>
-        private CompareFilesCommand(AsyncPackage package, OleMenuCommandService commandService) : base(package)
+        private CompareFilesCommand(AsyncPackage package, OleMenuCommandService commandService, DTE appObject) : base(package, appObject)
         {
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
@@ -47,7 +48,7 @@ namespace CompareFilesVS2019
             get;
             private set;
         }
-
+                
         /// <summary>
         /// Gets the service provider from the owner package.
         /// </summary>
@@ -70,7 +71,8 @@ namespace CompareFilesVS2019
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
-            Instance = new CompareFilesCommand(package, commandService);
+            var appObject = await package.GetServiceAsync(typeof(DTE)) as DTE;
+            Instance = new CompareFilesCommand(package, commandService, appObject);            
         }
 
     }
