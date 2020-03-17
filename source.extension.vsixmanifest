@@ -4,7 +4,7 @@
         <Identity Id="CompareFiles-VS2019.eaf28116-b78f-43d1-9b40-08f1769b00ad" Version="0.42" Language="en-US" Publisher="JonathanNagy" />
         <DisplayName>Compare Files VS2019</DisplayName>
         <Description xml:space="preserve">Control click any two files in Solution explorer and then right click and select "Compare Files..." and the configured third-party comparison tool will come up show a diff between the two files.</Description>
-        <MoreInfo>http://visualstudiogallery.msdn.microsoft.com/def5e5e7-f874-423c-8674-a8421490c4ac</MoreInfo>
+        <MoreInfo>https://marketplace.visualstudio.com/items?itemName=JonathanNagy.CompareFiles-VS2019</MoreInfo>
         <Icon>Package.ico</Icon>
         <PreviewImage>CompareFilesScreen.png</PreviewImage>
     </Metadata>
