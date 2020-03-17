@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CompareFiles.Common;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
@@ -16,9 +17,6 @@ namespace CompareFilesVS2019
     /// </summary>
     internal sealed class ConfigureCompareFilesCommand
     {
-        private string compareToolPath = @"%PROGRAMFILES(X86)%\Beyond Compare 4\BCompare.exe";
-        private const string settingsFilePath = @"%USERPROFILE%\AppData\Local\CompareFilesAddIn\CompareFiles.conf";
-
         /// <summary>
         /// Command ID.
         /// </summary>
@@ -60,17 +58,6 @@ namespace CompareFilesVS2019
         }
 
         /// <summary>
-        /// Gets the service provider from the owner package.
-        /// </summary>
-        private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
-        {
-            get
-            {
-                return this.package;
-            }
-        }
-
-        /// <summary>
         /// Initializes the singleton instance of the command.
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
@@ -95,69 +82,8 @@ namespace CompareFilesVS2019
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            ShowCompareFilesConfigurationWindow(sender, e);
+            ConfigurationDialog.ShowCompareFilesConfigurationWindow(sender, e);
         }
-
-        /// <summary>
-        /// This function is called when the user clicks the menu item that shows the 
-        /// tool window. See the Initialize method to see how the menu item is associated to 
-        /// this function using the OleMenuCommandService service and the MenuCommand class.
-        /// </summary>
-        private void ShowCompareFilesConfigurationWindow(object sender, EventArgs e)
-        {
-            LoadCompareToolPath();
-
-            using (var dialog = new ConfigurationDialog(compareToolPath))
-            {
-                DialogResult result = dialog.ShowDialog();
-
-                if (result == DialogResult.OK)
-                {
-                    StoreCompareToolPath(dialog.ToolPath);
-                }
-            }
-        }
-
-        private void LoadCompareToolPath()
-        {
-            FileInfo settingsFile = new FileInfo(Environment.ExpandEnvironmentVariables(settingsFilePath));
-            if (settingsFile.Exists)
-            {
-                using (FileStream fileStream = settingsFile.OpenRead())
-                {
-                    TextReader reader = new StreamReader(fileStream);
-                    var storedCompareToolPath = reader.ReadLine();
-                    if (!String.IsNullOrWhiteSpace(storedCompareToolPath))
-                    {
-                        compareToolPath = storedCompareToolPath;
-                    }
-                }
-            }
-        }
-
-        private void StoreCompareToolPath(string newToolPath)
-        {
-            FileInfo file = new FileInfo(Environment.ExpandEnvironmentVariables(settingsFilePath));
-            if (!file.Directory.Exists)
-                file.Directory.Create();
-
-            FileStream fileStream = null;
-            try
-            {
-                fileStream = file.Create();
-                using (TextWriter writer = new StreamWriter(fileStream))
-                {
-                    fileStream = null;
-                    writer.WriteLine(newToolPath);
-                }
-            }
-            finally
-            {
-                if (fileStream != null)
-                    fileStream.Dispose();
-            }
-        }
-
 
     }
 }

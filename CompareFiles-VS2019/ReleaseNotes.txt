@@ -1,4 +1,14 @@
-﻿Version 0.42 - 03/17/2020
+﻿Version 0.5 - 03/17/2020
+
+* Recreated VSIX project for VS2017 version
+* Added ability to add extra arguments to be placed before the compared file names.
+* Added extra arguments configuration field.
+* Changed configuration storage to json file instead of flat text file.
+* Moved common code out of VSIX project and moved to common library project.
+* Updated VS2017 and VS2019 VSIX projects to use new common library.
+* Added product and version info to configuration dialog.
+
+Version 0.42 - 03/17/2020
 
 * Moved GetServiceAsync to InitializeAsync in all Commands.
 * Adding Pro, Enterprise, and Shell Integration to supported editions.

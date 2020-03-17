@@ -3,6 +3,7 @@ using System.ComponentModel.Design;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using CompareFiles.Common;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -13,17 +14,17 @@ namespace CompareFilesVS2019
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class CompareFilesCommand : CompareFilesCommandBase
+    internal sealed class CompareFilesWebCommand : CompareFilesCommandBase
     {
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 4129;
+        public const int CommandId = 4130;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("b39b66a5-d715-428d-8172-469dafdd0da4");
+        public static readonly Guid CommandSet = new Guid("b39b66a5-d715-428d-8172-469dafdd0da5");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CompareFilesCommand"/> class.
@@ -31,7 +32,7 @@ namespace CompareFilesVS2019
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
         /// <param name="commandService">Command service to add command to, not null.</param>
-        private CompareFilesCommand(AsyncPackage package, OleMenuCommandService commandService, DTE appObject) : base(package, appObject)
+        private CompareFilesWebCommand(AsyncPackage package, OleMenuCommandService commandService, DTE appObject) : base(package, appObject)
         {
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
@@ -43,12 +44,12 @@ namespace CompareFilesVS2019
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static CompareFilesCommand Instance
+        public static CompareFilesWebCommand Instance
         {
             get;
             private set;
         }
-                
+        
         /// <summary>
         /// Initializes the singleton instance of the command.
         /// </summary>
@@ -58,10 +59,10 @@ namespace CompareFilesVS2019
             // Switch to the main thread - the call to AddCommand in CompareFilesCommand's constructor requires
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
-
+            
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
             var appObject = await package.GetServiceAsync(typeof(DTE)) as DTE;
-            Instance = new CompareFilesCommand(package, commandService, appObject);            
+            Instance = new CompareFilesWebCommand(package, commandService, appObject);
         }
 
     }

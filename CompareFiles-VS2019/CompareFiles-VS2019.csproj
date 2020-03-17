@@ -4,6 +4,12 @@
     <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,22 +51,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CompareFilesCommandBase.cs" />
     <Compile Include="CompareFilesMultiCommand.cs" />
     <Compile Include="CompareFilesWebCommand.cs" />
     <Compile Include="CompareFilesCommand.cs" />
-    <Compile Include="ConfigurationDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConfigurationDialog.Designer.cs">
-      <DependentUpon>ConfigurationDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="ConfigureCompareFilesCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CompareFilesVS2019Package.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="Key.snk" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -77,6 +77,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="16.0.202" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.4.1057" />
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="CompareFilesScreen.png">
@@ -98,9 +101,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ConfigurationDialog.resx">
-      <DependentUpon>ConfigurationDialog.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\CompareFiles.Common\CompareFiles.Common.csproj">
+      <Project>{341eb0a1-a442-48e1-86e3-3484b3cd9d54}</Project>
+      <Name>CompareFiles.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EnvDTE;
-//using EnvDTE;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
 
-namespace CompareFilesVS2019
+namespace CompareFiles.Common
 {
-    internal abstract class CompareFilesCommandBase 
+    public abstract class CompareFilesCommandBase
     {
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -22,9 +16,11 @@ namespace CompareFilesVS2019
 
         private readonly DTE applicationObject;
 
-        private string compareToolPath = @"%PROGRAMFILES(X86)%\Beyond Compare 4\BCompare.exe";
-        private const string settingsFilePath = @"%USERPROFILE%\AppData\Local\CompareFilesAddIn\CompareFiles.conf";
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="package">Owner package, not null.</param>
+        /// <param name="appObject">DTE event object</param>
         protected CompareFilesCommandBase(AsyncPackage package, DTE appObject)
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
@@ -34,7 +30,7 @@ namespace CompareFilesVS2019
         /// <summary>
         /// Gets the service provider from the owner package.
         /// </summary>
-        private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
+        private IAsyncServiceProvider ServiceProvider
         {
             get
             {
@@ -55,11 +51,11 @@ namespace CompareFilesVS2019
 
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            LoadCompareToolPath();
+            CompareToolConfiguration.LoadCompareToolConfiguration();
 
             var items = applicationObject.SelectedItems;
 
-            var compareToolPathExpanded = Environment.ExpandEnvironmentVariables(compareToolPath);
+            var compareToolPathExpanded = Environment.ExpandEnvironmentVariables(CompareToolConfiguration.ExecutablePath);
 
             string arguments;
             switch (items.Count)
@@ -68,7 +64,7 @@ namespace CompareFilesVS2019
                     SelectedItem item = items.Item(1);
                     for (short i = 1; i <= item.ProjectItem.FileCount; i++)
                     {
-                        arguments = "\"" + item.ProjectItem.FileNames[i] + "\"";
+                        arguments = (CompareToolConfiguration.ExtraArugments + " \"" + item.ProjectItem.FileNames[i] + "\"").Trim();
                         System.Diagnostics.Process.Start(compareToolPathExpanded, arguments);
                     }
 
@@ -80,7 +76,7 @@ namespace CompareFilesVS2019
                             ProjectItem subItem = subProjectItems.Item(i);
                             for (short j = 1; j <= subItem.FileCount; j++)
                             {
-                                arguments = "\"" + subItem.FileNames[j] + "\"";
+                                arguments = (CompareToolConfiguration.ExtraArugments + " \"" + subItem.FileNames[j] + "\"").Trim();
                                 System.Diagnostics.Process.Start(compareToolPathExpanded, arguments);
                             }
                         }
@@ -91,7 +87,7 @@ namespace CompareFilesVS2019
                     SelectedItem item2 = items.Item(2);
                     for (short i = 1; i <= Math.Min(item1.ProjectItem.FileCount, item2.ProjectItem.FileCount); i++)
                     {
-                        arguments = "\"" + item1.ProjectItem.FileNames[i] + "\" \"" + item2.ProjectItem.FileNames[i] + "\"";
+                        arguments = (CompareToolConfiguration.ExtraArugments + " \"" + item1.ProjectItem.FileNames[i] + "\" \"" + item2.ProjectItem.FileNames[i] + "\"").Trim();
                         System.Diagnostics.Process.Start(compareToolPathExpanded, arguments);
                     }
 
@@ -105,7 +101,7 @@ namespace CompareFilesVS2019
                             ProjectItem subItem2 = subProjectItems2.Item(i);
                             for (short j = 1; j <= Math.Min(subItem1.FileCount, subItem1.FileCount); j++)
                             {
-                                arguments = "\"" + subItem1.FileNames[i] + "\" \"" + subItem2.FileNames[i] + "\"";
+                                arguments = (CompareToolConfiguration.ExtraArugments + " \"" + subItem1.FileNames[i] + "\" \"" + subItem2.FileNames[i] + "\"").Trim();
                                 System.Diagnostics.Process.Start(compareToolPathExpanded, arguments);
                             }
                         }
@@ -118,45 +114,5 @@ namespace CompareFilesVS2019
         }
 
         
-        private void LoadCompareToolPath()
-        {
-            FileInfo settingsFile = new FileInfo(Environment.ExpandEnvironmentVariables(settingsFilePath));
-            if (settingsFile.Exists)
-            {
-                using (FileStream fileStream = settingsFile.OpenRead())
-                {
-                    TextReader reader = new StreamReader(fileStream);
-                    var storedCompareToolPath = reader.ReadLine();
-                    if (!String.IsNullOrWhiteSpace(storedCompareToolPath))
-                    {
-                        compareToolPath = storedCompareToolPath;
-                    }
-                }
-            }
-        }
-
-        private void StoreCompareToolPath(string newToolPath)
-        {
-            FileInfo file = new FileInfo(Environment.ExpandEnvironmentVariables(settingsFilePath));
-            if (!file.Directory.Exists)
-                file.Directory.Create();
-
-            FileStream fileStream = null;
-            try
-            {
-                fileStream = file.Create();
-                using (TextWriter writer = new StreamWriter(fileStream))
-                {
-                    fileStream = null;
-                    writer.WriteLine(newToolPath);
-                }
-            }
-            finally
-            {
-                if (fileStream != null)
-                    fileStream.Dispose();
-            }
-        }
-
     }
 }
