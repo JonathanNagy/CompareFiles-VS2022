@@ -82,6 +82,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="ReleaseNotes.txt" />
     <Content Include="Resources\CompareFilesCommand.png" />
     <Content Include="Resources\ConfigureCompareFilesCommand.png" />
     <Resource Include="Resources\Compare_13153.png" />
