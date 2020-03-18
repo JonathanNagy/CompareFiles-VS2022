@@ -1,0 +1,27 @@
+﻿Version 0.5 - 03/17/2020
+
+* Recreated VSIX project for VS2017 version
+* Added ability to add extra arguments to be placed before the compared file names.
+* Added extra arguments configuration field.
+* Changed configuration storage to json file instead of flat text file.
+* Moved common code out of VSIX project and moved to common library project.
+* Updated VS2017 and VS2019 VSIX projects to use new common library.
+* Added product and version info to configuration dialog.
+
+Version 0.42 - 03/17/2020
+
+* Moved GetServiceAsync to InitializeAsync in all Commands.
+* Adding Pro, Enterprise, and Shell Integration to supported editions.
+
+Version 0.4 - 03/13/2020
+
+* Rewrote VSIX project for Visual Studio 2019.
+* Set default path as "%PROGRAMFILES(X86)%\Beyond Compare 4\BCompare.exe", which should work 
+  better on 64 bit installations of Windows.
+
+Version 0.3 - 02/24/2015
+
+* Updated default external comparison tool to Beyond Compare 4 (was Beyond Compare 3) and default 
+  path as "%PROGRAMFILES%\Beyond Compare 4\BCompare.exe", which should work better on 32 bit installations of Windows.
+* Added context menu entry for cross project multiple select scenario.
+* Added support for Visual Studio 2014 and 2015.
