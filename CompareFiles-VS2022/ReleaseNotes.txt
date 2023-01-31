@@ -3,6 +3,7 @@
 * Updated Newtonsoft.JSON reference to 13.0.2
 * Added validation error if compare tool file path does not exist on compare
 * Added validation of compare tool file path on configuration save
+* Added VS 2022 version
 
 Version 0.5 - 03/17/2020
 
