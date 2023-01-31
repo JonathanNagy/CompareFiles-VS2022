@@ -105,9 +105,9 @@
       <Project>{341eb0a1-a442-48e1-86e3-3484b3cd9d54}</Project>
       <Name>CompareFiles.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CompareFiles.Pre2022\CompareFiles.Pre2022.csproj">
-      <Project>{27f9eff6-757a-4970-b8e9-13cf79f70c9d}</Project>
-      <Name>CompareFiles.Pre2022</Name>
+    <ProjectReference Include="..\CompareFiles.PreVS2022\CompareFiles.PreVS2022.csproj">
+      <Project>{056c10b9-4900-4158-a4b7-63bc3a31d0e8}</Project>
+      <Name>CompareFiles.PreVS2022</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
