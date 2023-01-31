@@ -1,4 +1,4 @@
-﻿Version 0.6 - 01/31/2023
+﻿Version 0.61 - 01/31/2023
 
 * Updated Newtonsoft.JSON reference to 13.0.2
 * Added validation error if compare tool file path does not exist on compare

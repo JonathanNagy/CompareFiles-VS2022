@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="CompareFiles-VS2017.838c2bfc-e53d-4e6b-8131-700d12a0ea96" Version="0.60" Language="en-US" Publisher="JonathanNagy" />
+        <Identity Id="CompareFiles-VS2017.838c2bfc-e53d-4e6b-8131-700d12a0ea96" Version="0.61" Language="en-US" Publisher="JonathanNagy" />
         <DisplayName>Compare Files VS2017</DisplayName>
         <Description xml:space="preserve">Control click any two files in Solution explorer and then right click and select "Compare Files..." and the configured third-party comparison tool will come up show a diff between the two files.</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=JonathanNagy.CompareFiles-VS2017</MoreInfo>

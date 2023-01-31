@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="CompareFiles-VS2022.11893BBF-0838-4622-BFCC-372D71E09D94" Version="0.60" Language="en-US" Publisher="JonathanNagy" />
+        <Identity Id="CompareFiles-VS2022.11893BBF-0838-4622-BFCC-372D71E09D94" Version="0.61" Language="en-US" Publisher="JonathanNagy" />
         <DisplayName>Compare Files VS2022</DisplayName>
         <Description xml:space="preserve">Control click any two files in Solution explorer and then right click and select "Compare Files..." and the configured third-party comparison tool will come up show a diff between the two files.</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=JonathanNagy.CompareFiles-VS2022</MoreInfo>
@@ -9,18 +9,18 @@
         <PreviewImage>CompareFilesScreen.png</PreviewImage>
     </Metadata>
     <Installation>
-		<InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Community">
-			<ProductArchitecture>amd64</ProductArchitecture>
-		</InstallationTarget>
-		<InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Pro">
-			<ProductArchitecture>amd64</ProductArchitecture>
-		</InstallationTarget>
-		<InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Enterprise">
-			<ProductArchitecture>amd64</ProductArchitecture>
-		</InstallationTarget>
-		<InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.IntegratedShell">
-			<ProductArchitecture>amd64</ProductArchitecture>
-		</InstallationTarget>
+        <InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Community">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Pro">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Enterprise">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.IntegratedShell">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.6,)" />
