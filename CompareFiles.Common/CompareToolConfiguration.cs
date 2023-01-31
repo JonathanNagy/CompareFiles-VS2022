@@ -9,8 +9,8 @@ namespace CompareFiles.Common
         private const string defaultExecutablePath = @"%PROGRAMFILES(X86)%\Beyond Compare 4\BCompare.exe";
         private const string defaultExtraArguments = "";
 
-        internal static string ExecutablePath = defaultExecutablePath;
-        internal static string ExtraArugments = defaultExtraArguments;
+        public static string ExecutablePath = defaultExecutablePath;
+        public static string ExtraArugments = defaultExtraArguments;
 
         private const string settingsFilePath = @"%USERPROFILE%\AppData\Local\CompareFilesAddIn\CompareFilesConfig.json";
 

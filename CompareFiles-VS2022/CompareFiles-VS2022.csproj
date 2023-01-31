@@ -16,11 +16,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{CDCFD98E-C545-4319-BFE4-68B0F20794C8}</ProjectGuid>
+    <ProjectGuid>{C703585A-F763-4EFE-B5EF-F6E209916204}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CompareFilesVS2019</RootNamespace>
-    <AssemblyName>CompareFilesVS2019</AssemblyName>
+    <RootNamespace>CompareFilesVS2022</RootNamespace>
+    <AssemblyName>CompareFilesVS2022</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
@@ -51,15 +51,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CompareFilesVS2022CommandBase.cs" />
     <Compile Include="CompareFilesMultiCommand.cs" />
     <Compile Include="CompareFilesWebCommand.cs" />
     <Compile Include="CompareFilesCommand.cs" />
     <Compile Include="ConfigureCompareFilesCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CompareFilesVS2019Package.cs" />
+    <Compile Include="CompareFilesVS2022Package.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
@@ -75,8 +77,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="16.0.202" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.4.1057" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.4.33103.184" ExcludeAssets="runtime">
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.4.2119">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.2</Version>
     </PackageReference>
@@ -97,7 +104,7 @@
     <Resource Include="Resources\Compare_13153.png" />
     <None Include="Resources\Images_24bit.bmp" />
     <None Include="Resources\Images_32bit.bmp" />
-    <VSCTCompile Include="CompareFilesVS2019Package.vsct">
+    <VSCTCompile Include="CompareFilesVS2022Package.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
     <Content Include="Package.ico">
@@ -109,10 +116,6 @@
     <ProjectReference Include="..\CompareFiles.Common\CompareFiles.Common.csproj">
       <Project>{341eb0a1-a442-48e1-86e3-3484b3cd9d54}</Project>
       <Name>CompareFiles.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CompareFiles.Pre2022\CompareFiles.Pre2022.csproj">
-      <Project>{27f9eff6-757a-4970-b8e9-13cf79f70c9d}</Project>
-      <Name>CompareFiles.Pre2022</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
