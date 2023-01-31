@@ -68,9 +68,18 @@ namespace CompareFiles.Common
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            var filePath = txtFilePath.Text.Trim();
+            var compareToolPathExpanded = Environment.ExpandEnvironmentVariables(filePath);
+            if(!System.IO.File.Exists(filePath))
+            {
+                MessageBox.Show($"Comparison tool executable not found at '{compareToolPathExpanded}'.",
+                    "Compare Files", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             configuration = new CompareToolConfiguration()
             {
-                CompareToolExecutablePath = txtFilePath.Text,
+                CompareToolExecutablePath = filePath,
                 CompareToolExtraArguments = txtExtraArguments.Text
             };
             DialogResult = System.Windows.Forms.DialogResult.OK;

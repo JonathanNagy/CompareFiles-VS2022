@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
@@ -56,6 +57,13 @@ namespace CompareFiles.Common
             var items = applicationObject.SelectedItems;
 
             var compareToolPathExpanded = Environment.ExpandEnvironmentVariables(CompareToolConfiguration.ExecutablePath);
+
+            if(!File.Exists(compareToolPathExpanded))
+            {
+                MessageBox.Show($"Comparison tool executable not found at '{compareToolPathExpanded}'. Check your settings in Tools->Configure Compare Files...", 
+                    "Compare Files", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             string arguments;
             switch (items.Count)
