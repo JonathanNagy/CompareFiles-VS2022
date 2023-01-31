@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29806.167
+# Visual Studio 15
+VisualStudioVersion = 15.0.33026.149
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFiles-VS2019", "CompareFiles-VS2019\CompareFiles-VS2019.csproj", "{CDCFD98E-C545-4319-BFE4-68B0F20794C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFiles.Common", "CompareFiles.Common\CompareFiles.Common.csproj", "{341EB0A1-A442-48E1-86E3-3484B3CD9D54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFiles-VS2017", "CompareFiles-VS2017\CompareFiles-VS2017.csproj", "{93C47021-6A8B-4D2B-AA7D-3784E2F16189}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{341EB0A1-A442-48E1-86E3-3484B3CD9D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{341EB0A1-A442-48E1-86E3-3484B3CD9D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{341EB0A1-A442-48E1-86E3-3484B3CD9D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C47021-6A8B-4D2B-AA7D-3784E2F16189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C47021-6A8B-4D2B-AA7D-3784E2F16189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C47021-6A8B-4D2B-AA7D-3784E2F16189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C47021-6A8B-4D2B-AA7D-3784E2F16189}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
